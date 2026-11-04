@@ -155,6 +155,19 @@ bauplan query "SELECT * FROM daily_segment_stats LIMIT 5"
 ```
 Expected: 21 rows in `daily_segment_stats` (3 segments x 7 days).
 
+### 9. Install the Bauplan skills for Claude Code
+The demo uses the official [bauplan-skills](https://github.com/BauplanLabs/bauplan-skills) plugin
+(`bauplan@bauplan-skills`, v2.6.0): `bauplan-data-pipeline` to build and `bauplan-debug-and-fix-pipeline`
+to debug.
+```zsh
+claude plugin marketplace add BauplanLabs/bauplan-skills
+claude plugin install bauplan@bauplan-skills
+claude plugin list
+```
+Then restart Claude Code or run `/reload-plugins`. The plugin also provides `bauplan-data-quality-checks`,
+`bauplan-explore-data`, `bauplan-data-semantics`, `bauplan-data-assessment`, `bauplan-dag-optimization`,
+`bauplan-safe-ingestion` and `bauplan-migrate-to-typed-sdk`.
+
 ## Rules for the agent
 See `CLAUDE.md`. Short version: never write to Bauplan `main`, always pass `--from-ref`, check
 `bauplan <command> --help` before using flags, commit every code change.
